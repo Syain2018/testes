@@ -3,4 +3,3 @@ C:\Users\GA3\Desktop\授業\list\Debug\list.exe
 C:\Users\GA3\Desktop\授業 - コピー\list\Debug\list.exe
 C:\Users\GA3\Desktop\授業 - コピー\list1\Debug\list.exe
 C:\Users\GA3\Desktop\list1\Debug\list.exe
-C:\Users\GA3\Desktop\git\testes\list1\Debug\list.exe

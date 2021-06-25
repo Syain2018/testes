@@ -5,8 +5,8 @@
 
 using namespace std;
 
-#define WIDTH 800 //windowサイズ　横
-#define HEIGHT 600 //window サイズ　縦
+#define WIDTH 800
+#define HEIGHT 600
 
 struct Pos { float x; float y; };//位置
 
