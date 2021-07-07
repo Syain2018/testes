@@ -35,8 +35,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE,
 		//リストのメソッドを実行
 		for (auto i = bace.begin(); i != bace.end(); i++)
 			(*i)->Action(bace);//各オブジェクトの処理
-		
+
+		for (auto i = bace.begin(); i != bace.end(); i++)
+			(*i)->Draw();//各オブジェクトの処理
+
 		ScreenFlip();//画面更新
+
+		ClearDrawScreen();//画面クリア
+
 		//例外処理
 		if ((ProcessMessage() == -1))break;
 	}
@@ -44,5 +50,4 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE,
 	DxLib_End();
 
 	return 0;
-}//aaaaaaaaaa
-//aaaaaaaaaa
+}

@@ -20,6 +20,16 @@ private:
 	bool victory_flag = false;//相手の入力が間違ったときに使用
 	bool check_flag = false;  //true:button_flagの中に入る
 	bool font_flag = false;  //現在配列に入っている数字を表示するのに使用
+	bool true_flag = false;  //入力した数字が正しい場合に使用
+
+	int Button[9] = { 0,0,0,0,0,0,0,0,0 };
+
+	int Sound = 0;
+
+	int Sound2 = 0;
+
+	int Sound3 = 0;
+
 public:
 	int img{ 0 };//画像
 	int sound{ 0 };//音楽
@@ -31,3 +41,5 @@ public:
 	int Action(list<unique_ptr<Bace>>& bace);
 	void Draw();
 };
+
+int Hit(float x, float y);
