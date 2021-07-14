@@ -1,7 +1,7 @@
 ﻿  Hit.cpp
   main.cpp
   player.cpp
-C:\Users\GA3\Desktop\testes\list1\player.cpp(62,25): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\GA3\Desktop\testes\list1\player.cpp(62,22): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\testes\list1\player.cpp(80,25): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\testes\list1\player.cpp(80,22): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
   コードを生成中...
   list.vcxproj -> C:\Users\GA3\Desktop\testes\list1\Debug\list.exe
