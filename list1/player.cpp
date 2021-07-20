@@ -157,20 +157,47 @@ int Player::Action(list<unique_ptr<Bace>>& bace)
 		}
 	}
 
+	if (victory_flag == true && CheckHitKey(KEY_INPUT_T))
+	{
+		title_flag = false;
+		victory_flag = false;
+		check_flag = false;
+		font_flag = false;
+		true_flag = false;
+		sound_flag = false;
+		StopSoundFile();
+		button_flag = 0;
+		player_flag = 0;
+		save_count = 0;
+		count = 0;
+		for (int i = 0; i < 50; i++)
+		{
+			save[i] = 0;
+		}
+	}
+
+	else if (victory_flag == true && CheckHitKey(KEY_INPUT_E))
+	{
+		DxLib_End();
+	}
+
 	return 0;
 }
 
 //描画
 void Player::Draw()
 {
+	//タイトル画面の表示
 	if (title_flag == false)
 	{
 		SetFontSize(80);
-		DrawString(200, 170, "記憶ゲーム", GetColor(255, 0, 0));
+		DrawString(200, 150, "記憶ゲーム", GetColor(255, 0, 0));
 		SetFontSize(45);
-		DrawString(100, 400, "   ゲームを始めるには\n\nENTERキーを押してください", GetColor(255, 255, 255));
+		DrawString(55, 400, "ENTERキー:ゲームをスタートする", GetColor(255, 255, 255));
+		DrawString(155, 500, "Eキー:ゲームを終了する", GetColor(255, 255, 255));
 	}
 
+	//ゲーム画面の表示
 	else if (title_flag == true)
 	{
 		//画像の表示処理
@@ -184,14 +211,19 @@ void Player::Draw()
 	}
 
 	//どちらかの勝利が確定した時の処理
-	if (victory_flag == true && player_flag == 0)
+	if (victory_flag == true)
 	{
-		DrawString(250, 100, "2Pの勝ちです", GetColor(255, 0, 0));
-	}
-
-	else if (victory_flag == true && player_flag == 1)
-	{
-		DrawString(250, 100, "1Pの勝ちです", GetColor(255, 0, 0));
+		if (player_flag == 0)
+		{
+			DrawString(150, 40, "1Pが入力を間違えたので", GetColor(255, 255, 255));
+			DrawString(250, 130, "2Pの勝ちです", GetColor(255, 0, 0));
+		}
+		else if (player_flag == 1)
+		{
+			DrawString(150, 40, "2Pが入力を間違えたので", GetColor(255, 255, 255));
+			DrawString(250, 130, "1Pの勝ちです", GetColor(255, 0, 0));
+		}
+		DrawString(150, 230, "Tキー:タイトル画面に戻る\nEキー:ゲームを終了する", GetColor(255, 255, 255));
 	}
 
 	//ボタンが押されて手番が変わる時の処理
@@ -202,8 +234,8 @@ void Player::Draw()
 			if (button_flag != 0)
 			{
 				DrawFormatString(175, 160, GetColor(255, 0, 0), "%dボタンが押されました", button_flag);
-				DrawString(240, 220, "手番が変わります", GetColor(255, 255, 255));
-				DrawString(120, 280, "ENTERキーを押してください", GetColor(255, 255, 255));
+				DrawString(200, 240, "ENTERキーを押したら", GetColor(255, 255, 255));
+				DrawString(240, 300, "手番が変わります", GetColor(255, 255, 255));
 			}
 		}
 	}
@@ -211,7 +243,7 @@ void Player::Draw()
 	//入力した数字が正しかった時の処理
 	if (true_flag == true)
 	{
-		DrawString(120, 200, "正しい数字が入力されました", GetColor(255, 0, 0));
+		DrawString(110, 150, "正しい数字が入力されました", GetColor(255, 0, 0));
 	}
 
 	//現在入力されている数字を見るための処理
@@ -237,6 +269,17 @@ void Player::Draw()
 	else if (button_flag == 0 && save_count <= count && title_flag == true)
 	{
 		DrawString(90, 150, "新たに数字を入力してください", GetColor(255, 255, 255));
+	}
+
+	//待機画面に文字を表示する処理2
+	if (title_flag == true && player_flag == 0 && font_flag == false && victory_flag == false)
+	{
+		DrawString(250, 270, "※1Pの番です", GetColor(255, 255, 255));
+	}
+
+	else if (title_flag == true && player_flag == 1 && font_flag == false && victory_flag == false)
+	{
+		DrawString(250, 270, "※2Pの番です", GetColor(255, 255, 255));
 	}
 
 }
